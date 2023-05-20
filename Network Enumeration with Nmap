@@ -35,11 +35,15 @@ Scanning Options 	Description
 $ sudo nmap 10.0.2.15 -sn -oA host -PE --packet-trace 
 $ sudo nmap 10.0.2.15 -sn -oA host -PE --reason 
 $ sudo nmap 10.0.2.15 -sn -oA host -PE --packet-trace --disable-arp-ping 
-sudo nmap 10.0.2.15 -sn -oA host -PE --data-length 56
+$ sudo nmap 10.129.2.28 -F -sU
+
 Scanning Options 	Description
 -PE 	            Performs the ping scan by using 'ICMP Echo requests' against the target.
 --packet-trace 	    Shows all packets sent and received
 --reason 	        Displays the reason for specific result.
+--disable-arp-ping 	Disables ARP ping.
+-F 	                Scansiona le prime 100 porte.
+-sU 	            Esegue una scansione UDP. 
 
 //This scanning method works only if the firewalls of the hosts allow it. 
 
@@ -64,7 +68,8 @@ Scanning Options 	Description
 -oA host 	        Stores the results in all formats starting with the name 'host'.(Memorizza i risultati in tutti i formati che iniziano con il nome "host".)
 
 
-
+SCANNING PORT
+$ sudo nmap 10.129.2.28 --top-ports=10 
 
 
 
