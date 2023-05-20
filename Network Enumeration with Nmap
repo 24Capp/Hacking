@@ -76,7 +76,12 @@ SCAN USERNAME:
 $ sudo nmap 10.129.2.28 -Pn -n --disable-arp-ping --packet-trace -p 445 --reason  -sV
 
 
+SCRIPT:
+$ sudo nmap 10.129.2.28 -p 80 -sV --script vuln 
+$ sudo nmap <target> --script <script-name>,<script-name>,...
 
+Nmap - Aggressive Scan
+$ sudo nmap 10.129.2.28 -p 80 -A
 
 
 
