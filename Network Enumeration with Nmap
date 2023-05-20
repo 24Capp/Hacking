@@ -21,9 +21,10 @@ SYNTAX (BASE)
 $ nmap <scan types> <options> <target>
 $ nmap --help
 $ sudo nmap -sS HOSTNAME  (Scansiona le principali porte)
+$ sudo nmap <target> --script <script-name>,<script-name>,...
 
 
-SCAN NETWORK RANGE (ESEMPIO: AZIENDE) (Scansiona l'intervallo di rete)
+SCAN NETWORK RANGE/FIREWALL AND IDS-IPS EVASION (ESEMPIO: AZIENDE) (Scansiona l'intervallo di rete)
 $ sudo nmap 10.129.2.0/24 -sn -oA tnet | grep for | cut -d" " -f5
 
 Scanning Options 	Description
@@ -36,6 +37,8 @@ $ sudo nmap 10.0.2.15 -sn -oA host -PE --packet-trace
 $ sudo nmap 10.0.2.15 -sn -oA host -PE --reason 
 $ sudo nmap 10.0.2.15 -sn -oA host -PE --packet-trace --disable-arp-ping 
 $ sudo nmap 10.129.2.28 -F -sU
+$ sudo nmap 10.129.2.28 -p 80 -sS -Pn -n --disable-arp-ping --packet-trace -D RND:5  (SCANSIONE CON ESCHE)
+$ sudo nmap 10.129.2.28 -p50000 -sS -Pn -n --disable-arp-ping --packet-trace --source-port 53
 
 Scanning Options 	Description
 -PE 	            Performs the ping scan by using 'ICMP Echo requests' against the target.
@@ -44,6 +47,8 @@ Scanning Options 	Description
 --disable-arp-ping 	Disables ARP ping.
 -F 	                Scansiona le prime 100 porte.
 -sU 	            Esegue una scansione UDP. 
+-D RND:5 	        Genera cinque indirizzi IP casuali che indicano l'IP di origine da cui proviene la connessione. 
+--source-port 53 	Esegue le scansioni dalla porta di origine specificata. 
 
 //This scanning method works only if the firewalls of the hosts allow it. 
 
@@ -78,12 +83,12 @@ $ sudo nmap 10.129.2.28 -Pn -n --disable-arp-ping --packet-trace -p 445 --reason
 
 SCRIPT:
 $ sudo nmap 10.129.2.28 -p 80 -sV --script vuln 
-$ sudo nmap <target> --script <script-name>,<script-name>,...
+
 
 Nmap - Aggressive Scan
 $ sudo nmap 10.129.2.28 -p 80 -A
 
 
-
-
+CONNECT TO THE FILTERED PORT
+$ ncat -nv --source-port 53 10.129.2.28 50000
 
