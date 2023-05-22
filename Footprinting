@@ -20,5 +20,14 @@ nc -nv 10.129.161.75 21
 smbclient //10.129.161.75/sambashare
 
 SAMBA FLAG
+1)flag
+sudo nmap 10.129.161.75 -sV -sC -p139,445
+2)flag
+smbclient -N -L //10.129.161.75/
+3)flag
+smbclient //10.129.161.75/sambashare
+4)flag
 
+5)
+smbclient -N -L //10.129.161.75/
 
