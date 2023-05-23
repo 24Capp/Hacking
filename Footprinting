@@ -27,7 +27,8 @@ smbclient -N -L //10.129.161.75/
 3)flag
 smbclient //10.129.161.75/sambashare
 4)flag
-
+rpcclient -U "" 10.129.227.79
+querydominfo
 5)
 smbclient -N -L //10.129.161.75/
 
