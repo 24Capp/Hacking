@@ -38,5 +38,18 @@ rpcclient -U "" 10.129.227.79
 netshareenumall
 
 NFS FLAG:
+1)flag #Enumerare il servizio NFS e inviare il contenuto
+sudo nmap --script nfs* 10.129.240.166 -sV -p111,2049
+showmount -e 10.129.240.166
+mkdir target-NFS
+sudo mount -t nfs 10.129.240.166:/ ./target-NFS/ -o nolock
+
+DNS FLAG:
+1)flag  #Interagire con il DNS di destinazione utilizzando il suo indirizzo IP ed enumerarne l'FQDN per il dominio "inlanefreight.htb".
+dig ns inlanefreight.htb @10.129.215.147 	
+2)flag  #Identificare se è possibile eseguire un trasferimento di zona e inviare il record TXT come risposta.
+dig axfr inlanefreight.htb @10.129.215.147
+dig axfr internal.inlanefreight.htb @10.129.215.147
+3)
 
 
