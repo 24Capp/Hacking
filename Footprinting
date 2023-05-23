@@ -14,21 +14,29 @@ Important note: The human aspect and the information that can be obtained by emp
 
 
 FTP FLAG:
+#Quale versione del server FTP è in esecuzione sul sistema di destinazione?
+#Enumerare il server FTP
 wget -m ftp://anonymous:anonymous@10.129.161.75 #Donwload all
 sudo nmap -sV -p21 -sC -A 10.129.161.75
 nc -nv 10.129.161.75 21
 smbclient //10.129.161.75/sambashare
 
-SAMBA FLAG
-1)flag
+SMB FLAG:
+1)flag  #Quale versione del server SMB è in esecuzione sul sistema di destinazione?
 sudo nmap 10.129.161.75 -sV -sC -p139,445
-2)flag
+2)flag  #Qual è il nome della condivisione accessibile sul target?
 smbclient -N -L //10.129.161.75/
 3)flag
 smbclient //10.129.161.75/sambashare
-4)flag
+4)flag #Scopri a quale dominio appartiene il server
 rpcclient -U "" 10.129.227.79
 querydominfo
-5)
+5)flag
 smbclient -N -L //10.129.161.75/
+6)flag   #path
+rpcclient -U "" 10.129.227.79
+netshareenumall
+
+NFS FLAG:
+
 
